@@ -1,7 +1,5 @@
 package utilities;
 
- 
-
 import java.util.NoSuchElementException;
 
  
@@ -16,7 +14,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
- 
 
 import common.BrowserFactory;
 
@@ -30,7 +27,7 @@ public class WaitUtils extends BrowserFactory{
         
     }
     
-    public static void waitForElementPresent(WebElement elementToWaitFor) {
+    public static void waitForElementPresent(WebElement elementToWaitFor) throws Exception {
         
         try {
             

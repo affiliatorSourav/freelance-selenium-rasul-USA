@@ -1,8 +1,8 @@
 package stepdefinitions;
 
-import cucumber.api.java.After;
-import cucumber.api.java.Before;
-import cucumber.api.Scenario;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -21,13 +21,13 @@ public class Hooks {
 
     @After
     public void tearDown(Scenario scenario) {
-    	/*
+    	
         if(scenario.isFailed()) {
             String screenShotName = scenario.getName();
             scenario.log("Current page URL is " + driver.getCurrentUrl());
             byte[] screenShot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
             scenario.attach(screenShot, "image/png", screenShotName);
-        }*/
+        }
     	
         driver.quit();
     }
