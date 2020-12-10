@@ -1,45 +1,44 @@
 package stepdefinitions;
 
-import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
+import cucumber.api.java.en.And;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.WebDriver;
+//import org.openqa.selenium.WebDriver;
+
+import pageobjects.BasePage;
 import pageobjects.LoginPage;
+import utilities.ConfigUtils;
 
 /**
  * In Stepdefinitions class we will use assertions and call
  * other methods from PageObject classes to do our validations.
  */
-public class LoginStepDefs {
+public class LoginStepDefs extends BasePage {
 
-    private WebDriver driver;
-    private LoginPage loginPage;
-
-    public LoginStepDefs() {
-        this.driver = Hooks.driver;
-        this.loginPage = new LoginPage(driver);
-    }
+	LoginPage loginPage = new LoginPage();
+    
 
     @Given("I am on Parabank application login page")
-    public void i_am_on_parabank_application_login_page() {
-        driver.get("https://parabank.parasoft.com/parabank/index.htm");
+    public void i_am_on_parabank_application_login_page() throws Exception {
+        //driver.get("https://parabank.parasoft.com/parabank/index.htm");
+    	driver.get(ConfigUtils.getConfigProperty("ApplicationUrl"));
     }
 
     @When("I enter valid username and password")
-    public void i_enter_valid_username_and_password() {
-       loginPage.enterValidUsernameAndPassword();
+    public void i_enter_valid_username_and_password() throws Exception {
+    	loginPage.enterValidUsernameAndPassword();
 
     }
 
     @And("I click on LOG IN button")
-    public void i_click_on_log_in_button() {
+    public void i_click_on_log_in_button() throws Exception {
         loginPage.clickLogin();
     }
 
     @Then("I validate I am logged in")
-    public void i_validate_i_am_logged_in() {
+    public void i_validate_i_am_logged_in() throws Exception {
         String actualAcctsOverViewTitle = loginPage.getAccountsOverviewTableTitle();
         Assert.assertEquals("ParaBank | Accounts Overview", actualAcctsOverViewTitle);
     }

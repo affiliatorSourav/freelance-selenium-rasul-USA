@@ -1,6 +1,6 @@
 Feature: Login Page Features
 
-  @Regression @Smoke @AL-12 @Login
+  @Login
   Scenario: Validate user can login to Parabank application using valid credentials
     Given I am on Parabank application login page
     When I enter valid username and password
